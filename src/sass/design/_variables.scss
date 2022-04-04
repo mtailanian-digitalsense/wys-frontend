@@ -1,0 +1,83 @@
+// Colors
+$white: #ffffff;
+$black: #000000;
+$gray1: #e5e5e5;
+$gray2: #f5f5f5;
+$gray3: #707070;
+$gray4: #666666;
+$darkgray: #8c8c8c;
+$darkgray2: #2a2c4b;
+$green1: #3ae67c;
+$green2: #40d100;
+$red: #ff745f;
+$purple: #885df6;
+$orange: #ffbc52;
+$orange2: #ff6f44;
+
+// Fonts
+$font_primary: "Raleway", sans-serif;
+$font_secondary: "Ciutadella Rounded";
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap");
+@font-face {
+    font-family: "Ciutadella Rounded";
+    src: url("../font/CiutadellaRounded-Regular3.woff2") format("woff2"),
+        url("../font/CiutadellaRounded-Regular3.woff") format("woff"),
+        url("../font/CiutadellaRounded-Regular3.ttf") format("truetype"),
+        url("../font/CiutadellaRounded-Regular3.svg#CiutadellaRounded-Regular3")
+            format("svg");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ciutadella Rounded";
+    src: url("../font/CiutadellaRounded-Regular4.woff2") format("woff2"),
+        url("../font/CiutadellaRounded-Regular4.woff") format("woff"),
+        url("../font/CiutadellaRounded-Regular4.ttf") format("truetype"),
+        url("../font/CiutadellaRounded-Regular4.svg#CiutadellaRounded-Regular4")
+            format("svg");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ciutadella Rounded";
+    src: url("../font/CiutadellaRounded-Regular.woff2") format("woff2"),
+        url("../font/CiutadellaRounded-Regular.woff") format("woff"),
+        url("../font/CiutadellaRounded-Regular.ttf") format("truetype"),
+        url("../font/CiutadellaRounded-Regular.svg#CiutadellaRounded-Regular")
+            format("svg");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Ciutadella Rounded";
+    src: url("../font/CiutadellaRounded-Regular2.woff2") format("woff2"),
+        url("../font/CiutadellaRounded-Regular2.woff") format("woff"),
+        url("../font/CiutadellaRounded-Regular2.ttf") format("truetype"),
+        url("../font/CiutadellaRounded-Regular2.svg#CiutadellaRounded-Regular2")
+            format("svg");
+    font-weight: 700;
+    font-style: normal;
+}
+
+// Mixins
+@mixin transition($speed) {
+    transition: $speed + ms all ease-in-out;
+}
+@mixin gradient(
+    $startColor,
+    $positionStart,
+    $endColor,
+    $positionEnd,
+    $rotation
+) {
+    background-color: $startColor;
+    background: linear-gradient(
+        $rotation,
+        $startColor $positionStart,
+        $endColor $positionEnd
+    );
+}

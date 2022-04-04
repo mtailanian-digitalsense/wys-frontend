@@ -1,0 +1,111 @@
+
+.range-label {
+	  position: absolute;
+  	top: -34px;
+  	left: -41px;
+  	color: #fff;
+  	font-size: 10px;
+  	padding: 6px 8px;
+    text-align: center;
+  	border-radius: 4px;
+  	background-color: #707070;
+    width: 110px;
+}
+.range-label::before {
+	content: '';
+	width: 10px;
+	height: 10px;
+	background-color: red;
+	position: absolute;
+	transform: rotate(45deg);
+	bottom: -4px;
+	left: calc(50% - 5px);
+	z-index: -1;
+  background-color: #707070;
+
+}
+.range-track {
+	height: 6px;
+  	width: 100%;
+  	background-color: #E6E6E6;
+  	margin: 0px 20px 0px;
+    border-radius: 3px;
+}
+.range-thumb {
+	height: 16px;
+  	width: 30px;
+  	background-color: #13D866;
+  	border-radius: 5px;
+  	border: 3px solid white;
+
+}
+.range-thumb.dragged {
+  	background-color: #1B8548;
+
+}
+.range-steps {
+  position: relative;
+  top: 10px;
+  left: 21px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.range-steps-step {
+  background-color: #D6D6D6;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+
+}
+.range-steps-step p {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  top: 5px;
+  left: -40px;
+  text-align: center;
+  font-size: 9px;
+  color: #8D8D8D;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.range-track-price-filter {
+  height: 6px;
+    width: 100%;
+    background-color: #FF6F44;
+    margin: 0px 20px 0px;
+    border-radius: 3px;
+}
+.range-thumb-price-filter {
+  height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: #FF6F44;
+    border: 3px solid white;
+
+}
+.range-label-price-filter {
+    position: absolute;
+    top: -34px;
+    left: -20px;
+    color: #fff;
+    font-size: 10px;
+    padding: 6px 8px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #707070;
+    width: 50px;
+}
+.range-label-price-filter::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  position: absolute;
+  transform: rotate(45deg);
+  bottom: -4px;
+  left: calc(50% - 5px);
+  z-index: -1;
+  background-color: #707070;
+
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="88" height="61" viewBox="0 0 88 61">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_4289" data-name="Rectángulo 4289" width="88" height="61" transform="translate(8129 -4728)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_4001" data-name="Grupo 4001" transform="translate(-8129 4728)" opacity="0.102">
+    <g id="Enmascarar_grupo_72" data-name="Enmascarar grupo 72" clip-path="url(#clip-path)">
+      <g id="Grupo_4000" data-name="Grupo 4000">
+        <circle id="Elipse_298" data-name="Elipse 298" cx="3" cy="3" r="3" transform="translate(8126 -4731)" opacity="0.771"/>
+        <circle id="Elipse_299" data-name="Elipse 299" cx="3" cy="3" r="3" transform="translate(8126 -4670)" opacity="0.771"/>
+        <circle id="Elipse_300" data-name="Elipse 300" cx="3" cy="3" r="3" transform="translate(8214 -4731)" opacity="0.771"/>
+        <circle id="Elipse_301" data-name="Elipse 301" cx="3" cy="3" r="3" transform="translate(8214 -4670)" opacity="0.771"/>
+        <circle id="Elipse_302" data-name="Elipse 302" cx="3" cy="3" r="3" transform="translate(8170 -4700)" opacity="0.771"/>
+      </g>
+    </g>
+  </g>
+</svg>

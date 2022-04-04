@@ -1,0 +1,278 @@
+@media screen and (min-width: 1600px) {
+}
+@media screen and (min-width: 1281px) and (max-width: 1400px) {
+    .main-content-logged {
+        .content {
+            .project-modules-area {
+                .module-box {
+                    height: 320px;
+                    min-width: 165px;
+                    .front-info {
+                        height: 250px;
+                        .icon-box {
+                            width: 70px;
+                            height: 70px;
+                            img {
+                                width: 70%;
+                                height: auto;
+                            }
+                        }
+                        .front-content {
+                            .module-name {
+                                font-size: 0.85rem;
+                            }
+                            .module-title {
+                                font-size: 1.25rem;
+                            }
+                        }
+                    }
+                    .back-info {
+                        height: 270px;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+    .main-content-logged {
+        .content {
+            .project-modules-area {
+                .module-box {
+                    height: 320px;
+                    min-width: 165px;
+                    .front-info {
+                        height: 250px;
+                        .icon-box {
+                            width: 70px;
+                            height: 70px;
+                            img {
+                                width: 70%;
+                                height: auto;
+                            }
+                        }
+                        .front-content {
+                            .module-name {
+                                font-size: 0.85rem;
+                            }
+                            .module-title {
+                                font-size: 1.25rem;
+                            }
+                        }
+                    }
+                    .back-info {
+                        height: 270px;
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .main-content-logged {
+        .content {
+            .project-modules-area {
+                .module-box {
+                    height: 270px;
+                    min-width: 165px;
+                    .front-info {
+                        height: 200px;
+                        .icon-box {
+                            width: 60px;
+                            height: 60px;
+                            img {
+                                width: 70%;
+                                height: auto;
+                            }
+                        }
+                        .front-content {
+                            .module-name {
+                                font-size: 0.85rem;
+                            }
+                            .module-title {
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                    .back-info {
+                        height: 240px;
+                        padding: 1rem;
+                        .button {
+                            padding-top: calc(1rem - 1px);
+                            padding-bottom: calc(1rem - 3px);
+                            padding-left: calc(1rem + 0.25rem);
+                            padding-right: calc(1rem + 0.25rem);
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .header-site {
+        .container {
+            padding: 2rem;
+        }
+        .user-header-area {
+            .button {
+                font-size: 1rem;
+                span {
+                    width: auto;
+                }
+                &.is-rounded {
+                    border-radius: 10rem;
+                    padding-left: 1.25rem;
+                    padding-right: 1.25rem;
+                }
+            }
+            .user-area {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                margin-left: 0;
+                border-left: none;
+                padding-left: 0;
+                margin-bottom: 0;
+                margin-top: 0;
+                order: 1;
+                flex-direction: column;
+                .profile-pic {
+                    width: 40px;
+                    height: 40px;
+                    overflow: hidden;
+                    border-radius: 100%;
+                    margin-bottom: 0.5rem;
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .user-info {
+                    margin-left: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    .user-name {
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        font-weight: 300;
+                        display: inline-block;
+                        margin-right: 0.5rem;
+                    }
+                }
+            }
+        }
+    }
+    .results-screen {
+        &.m2 {
+            .results {
+                .content {
+                    padding: 5rem 1rem;
+                    .result-area {
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .header-site {
+        .container {
+            flex-direction: column;
+            padding: 2rem;
+        }
+        .user-header-area {
+            flex-direction: column;
+            .button {
+                order: 2;
+                width: 90%;
+                font-size: 1rem;
+                span {
+                    width: auto;
+                }
+                &.is-rounded {
+                    border-radius: 10rem;
+                    padding-left: 1.25rem;
+                    padding-right: 1.25rem;
+                }
+            }
+            .user-area {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-left: 0;
+                border-left: none;
+                padding-left: 0;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+                order: 1;
+                .profile-pic {
+                    width: 60px;
+                    height: 60px;
+                    overflow: hidden;
+                    border-radius: 100%;
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .user-info {
+                    margin-left: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    .user-name {
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        font-weight: 300;
+                        display: inline-block;
+                        margin-right: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+    .form-box {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        .form-fields-area {
+            padding: 2rem;
+        }
+    }
+    .panels-area {
+        .panel-box {
+            margin: 1.5rem;
+        }
+    }
+    .results-screen {
+        &.m2 {
+            .results {
+                .content {
+                    padding: 5rem 1rem;
+                    .result-area {
+                        flex-direction: column-reverse;
+                        .item {
+                            margin: 1rem;
+                        }
+                        .result-data {
+                            order: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .popup-columns {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 400px) {
+}
