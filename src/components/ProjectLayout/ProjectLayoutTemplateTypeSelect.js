@@ -26,7 +26,7 @@ export default class ProjectLayoutTemplateTypeSelect extends Component {
                 <div className="project-tool-info">
                     <h2 className="tool-name">Layout</h2>                
                     <h1 className="subtool-name">
-                        Armar Layout
+                        Crear Layout
                     </h1>
                 </div>               
             </div>
@@ -45,7 +45,7 @@ export default class ProjectLayoutTemplateTypeSelect extends Component {
 	                </div>
 	                <div className="layout-select-template-type-box">
 	                 	<img alt="" className="layout-select-template-type-box-img" src={IconlayoutSelectedBD} />	                
-	                 	<div className="layout-select-template-type-box-title">Elegir desde nuestra<br /> base de datos</div>
+	                 	<div className="layout-select-template-type-box-title">Elegir desde la<br /> base de datos</div>
 	                 	<div onClick={()=> {this.setState({selected: 2})}}
                             className={"button is-rounded " + (this.state.selected===2?"is-green":"is-dark-line is-white")}>
 	                        {this.state.selected===2?"SELECCIONADO":"SELECCIONAR"}
@@ -53,7 +53,7 @@ export default class ProjectLayoutTemplateTypeSelect extends Component {
 	                </div>
 	                <div className="layout-select-template-type-box">
 	                 	<img alt="" className="layout-select-template-type-box-img" src={IconlayoutSelectedUpload} />	                
-	                 	<div className="layout-select-template-type-box-title">Cargar un plano<br /> de mi planta</div>
+	                 	<div className="layout-select-template-type-box-title">Cargar<br /> una planta</div>
 	                 	<div onClick={()=> {this.setState({selected: 3})}}
                             className={"button is-rounded " + (this.state.selected===3?"is-green":"is-dark-line is-white")}>
                             {this.state.selected===3?"SELECCIONADO":"SELECCIONAR"}

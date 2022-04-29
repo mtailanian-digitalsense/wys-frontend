@@ -76,7 +76,7 @@ export default class ProjectLayoutSearchForm extends Component {
                 <div className="project-tool-info">
                     <h2 className="tool-name">Layout</h2>                
                     <h1 className="subtool-name">
-                        Armar layout
+                        Crear layout
                     </h1>
                 </div>
             </div>

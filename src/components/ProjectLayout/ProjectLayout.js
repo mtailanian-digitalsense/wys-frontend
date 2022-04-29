@@ -30,6 +30,7 @@ export default class ProjectLayout extends Component {
             zone_id: "",
           },
           workspaces: null,
+          workers_number: null,
           building_data: null,   
           selected_floor: null,    
           loading_zone_buildings: false, 
@@ -87,7 +88,7 @@ export default class ProjectLayout extends Component {
     loadData() {
       setTimeout(()=> {
         findBuildingsParameters((error, result) => {
-            if(error) { return alert("error cargando parametros")}
+            if(error) { return console.log("error cargando parametros 'ProjectLayout: loadData'")}
               this.setState({countries: result});
               setTimeout(()=> {
                 this.loadBuildingData();    
@@ -118,7 +119,7 @@ export default class ProjectLayout extends Component {
         
         generateWorkspacesM2(data, (error, result)=> {
             if(error) {
-                return alert("error");
+                return console.log("error");
             }
             result.workspaces.forEach((w)=> {
                 w.subcategories.forEach((s) => {
@@ -171,6 +172,9 @@ export default class ProjectLayout extends Component {
         getProjectM2Data(this.props.project.id, (error, result)=> {
             if(result) {
               var workspaces = [...this.state.workspaces];
+              if(result.m2_generated_data.workers_number){
+                this.setState({'workers_number':result.m2_generated_data.workers_number});
+              }
               result.m2_generated_data.workspaces.forEach((space)=> {
                 workspaces.forEach((ws)=> {
                   ws.subcategories.forEach((sc)=> {
@@ -605,6 +609,7 @@ export default class ProjectLayout extends Component {
                                           setSpaceColor={this.setSpaceColor.bind(this)}
                                           setSpaceAlias={this.setSpaceAlias.bind(this)}
                                           changeSpace={this.changeSpace.bind(this)}
+                                          workers_number={this.state.workers_number}
 
                                            />
                                           

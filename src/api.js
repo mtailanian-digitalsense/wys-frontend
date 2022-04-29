@@ -161,6 +161,10 @@ export function searchBuildingByName2(region_name, building_name, cb) {
 export function getSpacesCategories(generated_layout, cb) {
   defaultPost(urls.backend + "/spaces/categories", generated_layout, cb);     
 }
+export function getProjectM2ByFloor(project_id, cb) {
+  defaultGet(urls.backend + "/projects/m2byfloor/" + project_id, cb);  
+}
+
 
 
 function defaultGet(url, cb) {

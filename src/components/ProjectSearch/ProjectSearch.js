@@ -42,7 +42,7 @@ export default class ProjectSearch extends Component {
     componentDidMount() {
         this.props.redirect("/proyecto/" + this.props.project_id + "/busqueda_de_edificio");
         findBuildingsParameters((error, result) => {
-            if(error) { return alert("error cargando parametros")}
+            if(error) { return console.log("error cargando parametros ProjectSearch: componentDidMount")}
             this.setState({countries: result}, () => {
               getProjectM2Data(this.props.project_id, (error, result)=> {
                 if(error) { 

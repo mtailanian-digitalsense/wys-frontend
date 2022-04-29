@@ -9,7 +9,7 @@ import editIconWhite from '../../img/layout-tools-edit-white.svg';
 import editIconBlack from '../../img/layout-tools-edit-black.svg';
 import {getSpacesCategories} from "../../api.js";  
 import Scrollbar from "react-scrollbars-custom";
-
+import {getProjectInfo, getProjectM2ByFloor} from "../../api.js";
 
 var PolyBool = require('polybooljs');
 export default class ProjectLayoutPositions extends Component {
@@ -23,6 +23,9 @@ export default class ProjectLayoutPositions extends Component {
             subMenuDelta:0,
             MenuWithChromeH:390,
             MenuWithScrollH:290,
+            sidebarM2:null,
+            sidebarM2People:null,
+            show_workers:true,
         };
     }
     componentDidMount() {
@@ -38,6 +41,7 @@ export default class ProjectLayoutPositions extends Component {
          this.setState({layout_dimensions: {width: img.width, height: img.height}});
         }        
       }
+      this.sidebarM2Data();
       this.startMoveContext();
     }
     componentWillUnmount() {
@@ -51,7 +55,31 @@ export default class ProjectLayoutPositions extends Component {
 
         });
       }
+      console.log('LOG', this.state, this.props);
     }
+    sidebarM2Data() {
+        if(this.state && !this.state.sidebarM2 && Number.isInteger(parseInt(this.props.project.id))) {
+            getProjectInfo(this.props.project.id, (error, result) => {
+                if(error) {
+                    this.setState({sidebarM2: ''});
+                    setTimeout(this.sidebarM2Data, 1000);
+                    return;
+                }
+                this.setState({projectData: result});
+                if(this.state.projectData.m2){
+                  this.setState({sidebarM2: this.state.projectData.m2});
+                }else{
+                  getProjectM2ByFloor(this.props.project.id, (error, result) =>{
+                    this.setState({show_workers: false});
+                    if(!error && result.m2){
+                      this.setState({sidebarM2: result.m2});
+                    }
+                  })
+                }
+            });
+        }
+    }
+
     startMoveContext() {
       window.addEventListener("mouseup", (e) => {
            if(!this.state.dragged) return;
@@ -505,14 +533,22 @@ export default class ProjectLayoutPositions extends Component {
             <div className={"layout-positions-sidebar"}>
               <div className={"layout-positions-sidebar-content"}>
                 <div className={"layout-positions-sidebar-title"}>Espacio de trabajo</div>
-                <div className={"layout-positions-sidebar-data"}><strong>Tipo</strong> Planta abierta</div>
-                <div className={"layout-positions-sidebar-data"}><strong>Metraje</strong> 820 mt<sup>2</sup></div>
-                <div className={"layout-positions-sidebar-data"}><strong>Metraje por persona</strong> 10 mt<sup>2</sup></div>
-                <div className={"layout-positions-sidebar-data"}><strong>Cantidad de personas</strong> 110</div>
-                {/*<div className={"layout-positions-sidebar-data"}><strong>Oficinas Privadas</strong> 8 personas</div>
+                {(this.state.sidebarM2)?
+                  <div className={"layout-positions-sidebar-data"}><strong>Metraje</strong> {Math.round((this.state.sidebarM2 + Number.EPSILON) * 100) / 100} mt<sup>2</sup></div>:
+                  <div className={"layout-positions-sidebar-data"}><strong>Metraje</strong> {this.state.sidebarM2===null?'No Disponible':'Cargando'}</div>}
+                {(this.state.sidebarM2 && this.props.workers_number && this.state.show_workers)?
+                  <div className={"layout-positions-sidebar-data"}><strong>Metraje por persona</strong> {(Math.round((this.state.sidebarM2/ this.props.workers_number + Number.EPSILON) * 100) / 100)} mt<sup>2</sup></div>:
+                  <div className={"layout-positions-sidebar-data"}><strong>Metraje por persona</strong> No Disponible</div>}
+                {(this.state.sidebarM2 && this.props.workers_number && this.state.show_workers)?
+                  <div className={"layout-positions-sidebar-data"}><strong>Cantidad de personas</strong> {this.props.workers_number}</div>:
+                  <div className={"layout-positions-sidebar-data"}><strong>Cantidad de personas</strong> No Disponible</div>}
+                
+                {/*
+                <div className={"layout-positions-sidebar-data"}><strong>Oficinas Privadas</strong> 8 personas</div>
                 <div className={"layout-positions-sidebar-data"}><strong>Planta abieta</strong> 90 personas</div>
                 <div className={"layout-positions-sidebar-data"}><strong>Recepción</strong> 4 personas</div>
-                <div className={"layout-positions-sidebar-zones-title"}>Zonas seleccionadas</div>*/}
+                <div className={"layout-positions-sidebar-zones-title"}>Zonas seleccionadas</div>
+                */}
               </div>
 
                 <div className={"layout-positions-sidebar-toggle"} onClick={()=> {

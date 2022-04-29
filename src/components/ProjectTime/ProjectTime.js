@@ -92,10 +92,11 @@ var params = [
 export default class ProjectTime extends Component {
     constructor(props) {
         super(props);
-        this.state = {     
-          weeks: 0,      
+        this.state = {
+          weeks: 0,
           time_parameters: [...params],
-          params: {m2: 0}
+          params: {m2: 0},
+          initialLoading: true,
         };
     }
     componentDidMount() {
@@ -105,10 +106,10 @@ export default class ProjectTime extends Component {
     }
     componentDidUpdate(prevProps) {
       if((!prevProps.project ||typeof prevProps.project === "string") && this.props.project && this.props.project.id) {
-        this.loadData();   
+        this.loadData();
       }
     }
-    loadData() {     
+    loadData() {
         getSavedEstimatedTime(this.props.project_id, (error, result)=> {
           var current = [...this.state.time_parameters];
           current.forEach((param, i) => {
@@ -116,11 +117,11 @@ export default class ProjectTime extends Component {
                 if(property === param.name) param.selected = result[property];
               }
           });
-          this.setState({time_parameters: current});
+          this.setState({time_parameters: current, initialLoading:false});
           this.loadM2Data();
 
         });
-    } 
+    }
     
     loadM2Data() {
         this.setState({loading: true});
@@ -147,6 +148,7 @@ export default class ProjectTime extends Component {
           this.state.time_parameters.forEach((param)=> {
             data[param.name] = param.selected;
           });
+          data.demolitions = (data.demolitions == "yes");
           data.m2 = this.state.params.m2?this.state.params.m2:1000;
           getProjectEstimatedTime(data, (error, data)=> {
             this.setState({weeks: data.weeks});
@@ -158,32 +160,35 @@ export default class ProjectTime extends Component {
           this.state.time_parameters.forEach((param)=> {
             data[param.name] = param.selected;
           });
-          data.m2 = this.state.params.m2?this.state.params.m2:1000;          
+          data.demolitions = (data.demolitions == "yes");
+          data.m2 = this.state.params.m2?this.state.params.m2:1000;
           var current_day = 0;
           getProjectEstimatedTimeDetailed(data, (error, data)=> {
-            var details = data.map((detail, i) => {
-              var subtasks = [];
-              if(detail.subcategories) subtasks = detail.subcategories.map((subtask, j) => {
-                var start_day = current_day;
-                var end_day = start_day + (subtask.weeks);
-                current_day = end_day;
-                return {
-                  id: subtask.id,
-                  name: subtask.name,
-                  is_milestone: subtask.is_milestone,
-                  start_day,
-                  end_day
-                };
-              });
-              return({
-                id: detail.id,
-                name: detail.name,
-                subtasks
+            if(!error && data){
+                var details = data.map((detail, i) => {
+                  var subtasks = [];
+                  if(detail.subcategories) subtasks = detail.subcategories.map((subtask, j) => {
+                    var start_day = current_day;
+                    var end_day = start_day + (subtask.weeks);
+                    current_day = end_day;
+                    return {
+                      id: subtask.id,
+                      name: subtask.name,
+                      is_milestone: subtask.is_milestone,
+                      start_day,
+                      end_day
+                    };
+                  });
+                  return({
+                    id: detail.id,
+                    name: detail.name,
+                    subtasks
 
-              });
+                  });
 
-            });
-            this.setState({detail: details});
+                });
+                this.setState({detail: details});
+            }
           });     
     }
     setParameter(parameter, value, cb) {
@@ -226,7 +231,7 @@ export default class ProjectTime extends Component {
     }
     render() {
         var project = this.props.project;
-        if (!project || project === "loading") return <LoadingFull />;
+        if (this.state.initialLoading) return <LoadingFull />;
         
         return (
             <Fragment>
@@ -280,6 +285,9 @@ export default class ProjectTime extends Component {
                         onDismiss={(value) => {
                             if(value) this.setParameter("m2", parseInt(value), ()=>this.calculateTime());
                             this.setState({ areaPopup: false });
+                        }
+                        }
+                        onChangeMedition ={(value) => {
                         }
                         }
                     />

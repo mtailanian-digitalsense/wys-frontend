@@ -208,12 +208,7 @@ export default class CompareProjects extends Component {
                                     <p><br/>Cálculo de area</p>
                                 </div>
                                 <div className="item-row-value">
-                                    <CompareProjectsControls 
-                                        criteria={this.findThisCriteria("edificio")} 
-                                        column={"edificio"}
-                                        explanation='Selecciona "+" para ordenar el los edificios en orden alfabético ascendente o "-" en orden descendente.'
-                                        onChange={(criteria, column)=>this.updateTableOrder(criteria, column)}/>     
-                                    <p><br/>Búsqueda de edificio</p>
+                                <div style={{marginTop: '31px'}}><p><br/>Búsqueda de edificio</p></div>
                                 </div>
                                 <div className="item-row-value">                                    
                                     <div style={{marginTop: '31px'}}><p><br/>Layout</p></div>

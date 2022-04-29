@@ -27,7 +27,8 @@ export function set_average(buildings_data, criteria){
 }
 
 export function scale_buildings_rent_values(buildings_data){
-    if (buildings_data.length === 1) {
+    return buildings_data
+    /*if (buildings_data.length === 1) {
         buildings_data[0].data[0] = 10
     } else {
         var rent_values = buildings_data.map(function(x) {
@@ -44,24 +45,20 @@ export function scale_buildings_rent_values(buildings_data){
             buildings_data[i].data[0] = scaled_rent_values[i]
         }
     }
-    
-    return buildings_data
-
+    return buildings_data*/
 }
 
 export function find_best_building(criteria, std_buildings_data){
     var criteria_sum = criteria.reduce((a, b) => a + b, 0);
-    
     var weighted_averages =[];
     for(let i = 0; i < std_buildings_data.length; i++){
         let weighted_sum = 0
         for(let j = 0; j < std_buildings_data[i].data.length; j++){
-            weighted_sum = weighted_sum + std_buildings_data[i].data[j]*criteria[j]
+            weighted_sum = weighted_sum + std_buildings_data[i].data[j]*criteria[j];
         }
-        weighted_averages.push({average: Number((weighted_sum/criteria_sum)), id: std_buildings_data[i].id})
+        weighted_averages.push({average: Number((weighted_sum/std_buildings_data[i].data.length)), id: std_buildings_data[i].id})
     }
     let allAvg = weighted_averages.map(avg=>avg.average)
     var best_building_index = allAvg.indexOf(Math.max(...allAvg));
-
     return [best_building_index, weighted_averages];
 }

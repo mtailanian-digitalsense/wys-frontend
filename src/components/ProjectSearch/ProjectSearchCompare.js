@@ -63,6 +63,9 @@ export default class ProjectSearchCompare extends Component {
         var building = null;
         if(b.security_lvl !== undefined) building = b;
         else if(b.building && b.building.security_lvl !== undefined) building = b.building;
+        var floor = (building.floors&&building.floors.length)?building.floors[0]:b;
+        var mt_value = floor?parseInt(floor.rent_value/floor.m2): 0;
+
         var average = (
             building.security_lvl +
             building.public_transport_lvl +
@@ -70,9 +73,20 @@ export default class ProjectSearchCompare extends Component {
             building.services_lvl +
             building.sustainability_lvl +
             building.infrastructure_lvl +
-            building.view_lvl
-            //añadir mt_value con escala 1-10 (min-max)
-            )/7;
+            building.view_lvl+
+            mt_value//añadir mt_value con escala 1-10 (min-max)
+            )/8;
+        console.log([
+            building.security_lvl,
+            building.public_transport_lvl,
+            building.parking_lvl,
+            building.services_lvl,
+            building.sustainability_lvl,
+            building.infrastructure_lvl,
+            building.view_lvl,
+            mt_value//añadir mt_value con escala 1-10 (min-max)
+            ]);
+        console.log(average);
         return average;
     }
     updateCriteria(i, new_criteria) {
