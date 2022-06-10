@@ -31,14 +31,32 @@ export default class ProjectSearchForm extends Component {
                 }, (error, result) => {
                 this.setState({searching: false});
                 if(error) {
+                    console.log("error");
                   return alert("error buscando edificios");
                 }
-                if(result.length)
-                this.props.setBuildings(result, () => {
-                    this.props.redirect("/proyecto/" + (this.props.project?this.props.project.id:"") + "/busqueda_de_edificio/resultados");
-
-                });
-                else return this.setState({searching: "not_found"});
+                if(result.length){
+                    let dmax = result.reduce((max, b) => {
+                        let building = {};
+                        if(b.security_lvl !== undefined)
+                        {
+                            building = b;
+                        }else if(b.building && b.building.security_lvl !== undefined)
+                        {
+                            building = b.building;
+                        }
+                        let floor = (building.floors&&building.floors.length)?building.floors[0]:b;
+                        let mt_value = floor?parseInt(floor.rent_value/floor.m2):0;
+                        return max < mt_value ? mt_value : max;
+                    }, 0);
+                    dmax = Math.pow(10, Math.round(Math.log10(dmax)));
+                    this.props.setFilterParameter("max", dmax);
+                    this.props.setFilterParameter("value", dmax);
+                    this.props.setBuildings(result, () => {
+                        this.props.redirect("/proyecto/" + (this.props.project?this.props.project.id:"") + "/busqueda_de_edificio/resultados");
+                    });
+                }else{
+                    return this.setState({searching: "not_found"});
+                }
 
             });
 

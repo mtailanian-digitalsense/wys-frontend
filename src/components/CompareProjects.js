@@ -208,7 +208,8 @@ export default class CompareProjects extends Component {
                                     <p><br/>Cálculo de area</p>
                                 </div>
                                 <div className="item-row-value">
-                                <div style={{marginTop: '31px'}}><p><br/>Búsqueda de edificio</p></div>
+                                    <div style={{marginTop: '31px'}}><p><br/>Búsqueda de edificio</p></div>
+
                                 </div>
                                 <div className="item-row-value">                                    
                                     <div style={{marginTop: '31px'}}><p><br/>Layout</p></div>

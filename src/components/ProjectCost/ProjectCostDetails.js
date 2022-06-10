@@ -47,16 +47,13 @@ export default class ProjectCostDetails extends Component {
             }
         ];
         this.props.costs.categories.forEach((cat) => {
-            if(cat.code === "BASE" && cat.type !=="B" && cat.name!== "BASE CONSTRUCCIÓN") {
-                
+            if(cat.code === "BASE") {
                 if(cat.subcategories && cat.subcategories.length) {
-                    
                     cat.subcategories.forEach(sc=> {
                         costs[2].subcategories.push({name: cat.name + " " + sc.name, value: sc.value*this.props.rate});
 
                     });
                 } else {
-                    console.log(cat.name);
                     costs[2].subcategories.push({name: cat.name, value: cat.value*this.props.rate})
                 }
 

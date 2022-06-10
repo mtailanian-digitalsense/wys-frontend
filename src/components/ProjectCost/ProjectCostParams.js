@@ -21,38 +21,33 @@ export default class ProjectCostParams extends Component {
                 <div className="time-params-grid margin-side-A">
                     {!this.props.categories?null:this.props.categories.map((param, i) => {
                         if (param.type === "C") return;
-                        else{
-                            if(param.code !== "BASE"){
-                                return(
-                                    <div key={param.id} className={"time-params-box item-third flex space-between flex-align-items-center"} style={{paddingLeft: "5px", paddingRight: "20px"}}>
-                                        {param.comment ? <TooltipIcon label={param.comment} /> : <div style={{paddingLeft: "40px"}}/>}
-                                        <p style={{flex: 1}}>{param.name}</p>
-                                        <div className={"time-param-options"}>
-                                        {param.type === "B"?
-                                            
-                                            <Fragment>
-                                                <div 
-                                                onClick={(value)=>this.props.updateCategoryResp(param, "high")}
-                                                className={"time-param-option"+(param.resp==="high"?" selected":"")}>SÍ</div>
-                                                <div 
-                                                onClick={(value)=>this.props.updateCategoryResp(param, "low")}                                        
-                                                className={"time-param-option"+(param.resp==="low"?" selected":"")}>NO</div>
-                                            </Fragment>
+                        return(
+                            <div key={param.id} className={"time-params-box item-third flex space-between flex-align-items-center"} style={{paddingLeft: "5px", paddingRight: "20px"}}>
+                                {param.comment ? <TooltipIcon label={param.comment} /> : <div style={{paddingLeft: "40px"}}/>}
+                                <p style={{flex: 1}}>{param.name}</p>
+                                <div className={"time-param-options"}>
+                                {param.type === "B"?
+                                    
+                                    <Fragment>
+                                        <div 
+                                        onClick={(value)=>this.props.updateCategoryResp(param, "high")}
+                                        className={"time-param-option"+(param.resp==="high"?" selected":"")}>SÍ</div>
+                                        <div 
+                                        onClick={(value)=>this.props.updateCategoryResp(param, "low")}                                        
+                                        className={"time-param-option"+(param.resp==="low"?" selected":"")}>NO</div>
+                                    </Fragment>
 
-                                            :null
-                                        }
-                                        {param.type === "A"?                                    
-                                            <CostsFormControl 
-                                                noHelp={true}
-                                                value={param.resp} 
-                                                onChange={(value)=>this.props.updateCategoryResp(param, value)}/>
-                                            :null}
-                                        </div>
-                                    </div>
-                                );
-                            }
-                        }
-
+                                    :null
+                                }
+                                {param.type === "A"?                                    
+                                    <CostsFormControl 
+                                        noHelp={true}
+                                        value={param.resp} 
+                                        onChange={(value)=>this.props.updateCategoryResp(param, value)}/>
+                                    :null}
+                                </div>
+                            </div>
+                        );
                     })}
 
                   

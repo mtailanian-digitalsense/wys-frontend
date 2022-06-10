@@ -121,7 +121,10 @@ export default class ProjectSearch extends Component {
       this.setState({classFilterOptions});
     }
     setSearchBuilding(building) {
-      this.setState({buildings:[{...building, building_id:building.id, selected: true,}]});
+        var floor = (building.floors&&building.floors.length)?building.floors[0]:{};
+        //var mt_value = floor?parseInt(floor.rent_value/floor.m2): "-";
+        console.log(floor);
+      this.setState({buildings:[{...building, building_id:building.id, selected: true, m2:floor.m2, rent_value:floor.rent_value }]});
     }
     render() {
         var project = this.props.project;
@@ -155,6 +158,7 @@ export default class ProjectSearch extends Component {
                                       redirect={this.props.redirect}  
                                       countries={this.state.countries}
                                       setSearchBuilding={this.setSearchBuilding.bind(this)}
+                                      setFilterParameter={this.setFilterParameter.bind(this)}
                                       project={project} />);
                               }
                             }/>
@@ -166,7 +170,7 @@ export default class ProjectSearch extends Component {
                                         buildings={this.state.buildings.filter(building=> {
                                           var mt_value = parseInt(building.rent_value/building.m2);
                                           if(mt_value > this.state.selectedResultsFilter.value) return false;
-                                          //else if(this.state.selectedClassFilterOptions.indexOf(building.building.category) === -1) return false;
+                                          if(this.state.selectedClassFilterOptions.indexOf(building.building.category) === -1) return false;
                                           return true;
                                         })}
                                         classFilterOptions={this.state.classFilterOptions}
