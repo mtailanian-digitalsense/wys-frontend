@@ -34,7 +34,7 @@ export default class ModuleDoneModules extends Component {
                                     Cálculo de area
                                 </span>
                                 <h3 className="module-title">
-                                    {project.m2!==""?project.m2 + " mts":"¿Cuánto medirá?"}
+                                    {project.m2!==""?Math.round(project.m2) + " mts":"¿Cuánto medirá?"}
                                 </h3>
                                 <div className="module-link">
                                     <Link
